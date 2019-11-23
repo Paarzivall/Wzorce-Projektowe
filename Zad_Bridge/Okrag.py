@@ -2,8 +2,8 @@ from Figura import Figura
 
 
 class Okrag(Figura):
-    def __init__(self, bg,x, y, r):
-        super().__init__()
+    def __init__(self, bg, x, y, r):
+        super().__init__(bg)
         self.x = x
         self.y = y
         self.r = r

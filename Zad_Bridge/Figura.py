@@ -4,8 +4,8 @@ from Biblioteka import Biblioteka
 
 class Figura(ABC):
     @abstractmethod
-    def __init__(self):
-        self.biblioteka = Biblioteka()
+    def __init__(self, biblioteka):
+        self.biblioteka = biblioteka
 
     def rysujLinie(self, x1, y1, x2, y2):
         self.biblioteka.rysujLinie(x1, y1, x2, y2)
