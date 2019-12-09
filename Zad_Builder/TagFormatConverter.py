@@ -1,4 +1,5 @@
 from HTMLConverter import HTMLConverter
+import re
 
 
 class TagFormatConverter(HTMLConverter):
@@ -7,4 +8,10 @@ class TagFormatConverter(HTMLConverter):
 
     def ConvertTag(self, tag):
         tag = str(tag)
-        return tag.replace(tag, "<(\w)>(.+?)<\/\1>", "{$1#$2}")
+        finalString = "{"
+        finalString += re.match("<(\w)>(.+?)</(\w)>", tag).group(1)[0]
+        finalString += "#"
+        finalString += re.match("<(\w)>(.+?)</(\w)>", tag).group(2)[0]
+        finalString += "}"
+
+        return finalString

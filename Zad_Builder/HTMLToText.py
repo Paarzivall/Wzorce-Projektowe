@@ -1,4 +1,5 @@
 from HTMLConverter import HTMLConverter
+import re
 
 
 class HTMLToText(HTMLConverter):
@@ -7,4 +8,4 @@ class HTMLToText(HTMLConverter):
 
     def ConvertTag(self, tag):
         tag = str(tag)
-        return tag.replace(tag, "<(\w)>(.+?)<\/\1>", 2)
+        return re.match("<(\w)>(.+?)</(\w)>", tag).group(2)[0]

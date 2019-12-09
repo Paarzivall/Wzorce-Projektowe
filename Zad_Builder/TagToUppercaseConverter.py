@@ -1,4 +1,5 @@
 from HTMLConverter import HTMLConverter
+import re
 
 
 class TagToUppercaseConverter(HTMLConverter):
@@ -7,5 +8,5 @@ class TagToUppercaseConverter(HTMLConverter):
 
     def ConvertTag(self, tag):
         t = str(tag)
-        finalString = t.replace(t, "<(\w)>(.+?)<\/\1>", 2).upper()
+        finalString = re.match("<(\w)>(.+?)</(\w)>", t).group(2)[0].upper()
         return finalString

@@ -1,4 +1,5 @@
 from HTMLConverter import HTMLConverter
+import re
 
 
 class TagCapitalizeConverter(HTMLConverter):
@@ -6,11 +7,7 @@ class TagCapitalizeConverter(HTMLConverter):
         return character
 
     def ConvertTag(self, tag):
-        t = tag
-        content = t[t.find(">") + 1: t.find("<")]
-        print(type(content))
-        # content = t.replace(t, "<(\w)>(.+?)<\/\1>", 2)
-        # name = t.replace(t, "<(\w)>(.+?)<\/\1>", 1)
-        name = t[t.find("<") + 1: t.find(">")]
-        print(type(name))
+        t = str(tag)
+        content = re.search("<(\w)>(.+?)</(\w)>", t).group(2)
+        name = re.search("<(\w)>(.+?)</(\w)>", t).group(1)
         return f'<{name}>{content.upper()}</{name}>'
