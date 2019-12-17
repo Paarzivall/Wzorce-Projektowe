@@ -1,17 +1,16 @@
 from Animal import Animal
-from AllBird import AllBird
 
 
-class Bird(Animal, AllBird):
-    def __init__(self, name, value, ill, darkMarketValue):
-        super().__init__(name, value, ill)
-        self.darkMarketValue = darkMarketValue
+class Bird(Animal):
+    def __init__(self, name, price, ill, blackMarketValue):
+        super().__init__(name, price, ill)
+        self.blackMarketPrice = blackMarketValue
 
-    def accept(self, visitor):
-        visitor.visit(self)
+    def Accept(self, visitor):
+        visitor.VisitBird(self)
 
-    def getDarkMarketValue(self):
-        return self.darkMarketValue
+    def __str__(self):
+        return super().__str__() + f', Cena czarnorynkowa: {self.blackMarketPrice}'
 
 
 

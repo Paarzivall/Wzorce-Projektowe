@@ -2,16 +2,13 @@ from abc import ABC
 
 
 class Animal(ABC):
-    def __init__(self, name, value, ill):
+    def __init__(self, name, price, ill):
         self.name = name
-        self.value = value
+        self.Price = price
         self.ill = ill
 
-    def isIll(self):
-        return self.ill
-
-    def getValue(self):
-        return self.value
-
-    def accept(self, visitor):
+    def Accept(self, visitor):
         pass
+
+    def __str__(self):
+        return f'Zwierz: {self.name}, Cena: {self.Price}, Stan Zdrowia: {"Zdrowy" if self.ill else "Chory"}'
